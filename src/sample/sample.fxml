@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="735.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <tabs>
+        <Tab text="Numerical Method">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <LineChart fx:id="MyChart" layoutX="192.0" layoutY="3.0" prefHeight="215.0" prefWidth="543.0" title="Exact and Numerical Solutions" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+                            <xAxis>
+                                <NumberAxis label="x" side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="y" side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                        <LineChart fx:id="ErrorTable" layoutX="192.0" layoutY="218.0" prefHeight="225.0" prefWidth="543.0" title="Error table">
+                            <xAxis>
+                                <NumberAxis label="x" side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="y" side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                
+                        <ImageView fitHeight="143.0" fitWidth="195.0" layoutX="15.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/Screenshot_20180410_010716.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="label1" layoutX="49.0" layoutY="170.0" text="Current n is" />
+                        <Label layoutX="14.0" layoutY="194.0" text="you can input another one" />
+                        <TextField fx:id="inputN" layoutX="49.0" layoutY="222.0" onAction="#getN" promptText="n = 100" />
+                  <CheckBox fx:id="eulerBox" layoutX="25.0" layoutY="269.0" mnemonicParsing="false" onAction="#eulerChecked" text="Euler's Method" />
+                  <CheckBox fx:id="rungeBox" layoutX="25.0" layoutY="338.0" mnemonicParsing="false" onAction="#rungeChecked" text="Runge-Kutta" />
+                  <CheckBox fx:id="exactBox" layoutX="25.0" layoutY="371.0" mnemonicParsing="false" onAction="#exactChecked" text="Exact Solution" />
+                  <CheckBox fx:id="improvedBox" layoutX="25.0" layoutY="305.0" mnemonicParsing="false" onAction="#improvedChecked" text="Improved Euler" />
+                  <Label fx:id="labelN" layoutX="152.0" layoutY="170.0" text="100" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Truncation Error">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <LineChart fx:id="TruncError" layoutX="202.0" prefHeight="433.0" prefWidth="533.0" title="Truncation Error">
+                            <xAxis>
+                                <NumberAxis label="n" prefHeight="42.0" prefWidth="432.0" side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="error" side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Screenshot_20180410_010716.png" />
+                     </image>
+                  </ImageView>
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
