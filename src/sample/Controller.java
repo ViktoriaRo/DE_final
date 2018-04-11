@@ -43,7 +43,7 @@ public class Controller implements Initializable {
     private Series improvedError_ser = new Series();
     private Series rungeKuttaError_ser = new Series();
 
-    private int N = 150;
+    private int N = 100;
     private double x0 = 0, X = 8;
 //    private double h = (X - x0) / N;
     private double x[] = new double[N];
@@ -51,21 +51,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         calculate();
-
-    }
-
-    private double func(double x, double y) {
-        return (y * Math.cos(x) - y * Math.tan(x));
-    }
-
-    private void calculate() {
-        euler_ser = eulerApproximation(N);
-        improved_ser = improvedApproximation(N);
-        rungeKutta_ser = rungeApproximation(N);
-        exact_ser = exactSolution(N);
-
         int minN = 50;
-        int maxN = 150;
+        int maxN = 100;
         double eulerTruncError[] = new double[maxN - minN];
         for (int i = minN; i < maxN; i++) {
             eulerTruncError[i-minN] = eulerMaxError(i);
@@ -77,6 +64,17 @@ public class Controller implements Initializable {
         }
 
         TruncError.getData().add(eulerTruncError_ser);
+    }
+
+    private double func(double x, double y) {
+        return (y * Math.cos(x) - y * Math.tan(x));
+    }
+
+    private void calculate() {
+        euler_ser = eulerApproximation(N);
+        improved_ser = improvedApproximation(N);
+        rungeKutta_ser = rungeApproximation(N);
+        exact_ser = exactSolution(N);
 
     }
 
